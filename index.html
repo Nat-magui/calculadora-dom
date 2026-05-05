@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculadora DOM</title>
+  </head>
+
+  <body>
+    <!--contenedor principal de la calculadora-->
+    <main class="calculator">
+      <h1>Calculadora</h1>
+
+      <section class="calculator-panel" aria-label="Calculadora simple">
+        <!--pantalla donde se va a mostrar el numero actual-->
+        <output class="calculator-display"> 0 </output>
+        <!--contenedor donde despues JS va a crear los botones-->
+        <div class="calculator-keypad"></div>
+      </section>
+      <!--Lo dejamos preparado para el historial de cuentas realizadas-->
+      <aside class="calculator-history">
+        <h2>Historial</h2>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
