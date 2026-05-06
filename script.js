@@ -30,28 +30,28 @@ const calculatorState = {
 // label = texto que se muestra en el botón
 // type = tipo de botón, usado después para decidir qué acción ejecutar
 const buttons = [
+    { label: "C", type: "clear" },
+    { label: "←", type: "delete" },
+    { label: "/", type: "operator" },
+    { label: "*", type: "operator" },
+
     { label: "7", type: "number" },
     { label: "8", type: "number" },
     { label: "9", type: "number" },
-    { label: "/", type: "operator" },
+    { label: "-", type: "operator" },
 
     { label: "4", type: "number" },
     { label: "5", type: "number" },
     { label: "6", type: "number" },
-    { label: "*", type: "operator" },
+    { label: "+", type: "operator" },
 
     { label: "1", type: "number" },
     { label: "2", type: "number" },
     { label: "3", type: "number" },
-    { label: "-", type: "operator" },
+    { label: "=", type: "equals" },
 
     { label: "0", type: "number" },
-    { label: ".", type: "decimal" },
-    { label: "←", type: "delete" },
-    { label: "C", type: "clear" },
-    { label: "=", type: "equals" },
-    { label: "+", type: "operator" }
-
+    { label: ".", type: "decimal" }
 ]
 
 // Esta función actualiza la pantalla con el valor guardado en calculatorState.currentValue

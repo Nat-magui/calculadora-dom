@@ -44,3 +44,17 @@
 .calculator-history {
   margin-top: 24px;
 }
+
+.calculator-button[data-value="0"] {
+  grid-column: span 2;
+}
+
+.calculator-button[data-value="="] {
+  grid-row: span 2;
+  background: #dcfce7;
+}
+
+.calculator-button[data-value="C"],
+.calculator-button[data-value="←"] {
+  background: #f3f4f6;
+}
