@@ -194,11 +194,12 @@ function calculateResult() {
     // Guardamos el resultado como texto para mostrarlo en el display
     calculatorState.currentValue = String(result)
 
-    // Agregamos la operación realizada al historial
-    const operationText = `${calculatorState.previousValue} ${calculatorState.operator} ${calculatorState.currentValue} = ${result}`
-    // Agregamos la operación realizada al historial
-    addToHistory(operationText)
+    // Armamos el texto de la operacion antes de limpiar el estado
+    const operationText = `${previous} ${calculatorState.operator} ${current} = ${result}`
 
+    //Agregamos la operacion al historial
+    addToHistory(operationText)
+    
     // Limpiamos el valor previo y el operador porque la operación ya terminó
     calculatorState.previousValue = null
     calculatorState.operator = null
