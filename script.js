@@ -139,6 +139,11 @@ function deleteLastDigit() {
     //si hay mas de un digito, quitamos el ultimo caracter
     calculatorState.currentValue = calculatorState.currentValue.slice(0, -1)
 
+    //si al borrar queda vacio o queda solo el signo entonces volvemos a cero
+    if (calculatorState.currentValue === "" || calculatorState.currentValue === "-"){
+        calculatorState.currentValue = "0"
+    }
+
 }
 
 // Esta función maneja los operadores matemáticos
@@ -199,7 +204,7 @@ function calculateResult() {
 
     //Agregamos la operacion al historial
     addToHistory(operationText)
-    
+
     // Limpiamos el valor previo y el operador porque la operación ya terminó
     calculatorState.previousValue = null
     calculatorState.operator = null
