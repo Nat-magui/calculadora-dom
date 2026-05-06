@@ -46,7 +46,8 @@ const buttons = [
     { label: "-", type: "operator" },
 
     { label: "0", type: "number" },
-    { label: "←", type: "delete"},
+    { label: ".", type: "decimal" },
+    { label: "←", type: "delete" },
     { label: "C", type: "clear" },
     { label: "=", type: "equals" },
     { label: "+", type: "operator" }
@@ -69,6 +70,21 @@ function handleNumber(value) {
 
     // Si ya hay un número escrito, concatenamos el nuevo dígito al final
     calculatorState.currentValue += value
+}
+
+//esta funcion agrega un punto decimal al numero actual
+function handleDecimal(){
+    //si el display muestra error, empezamos un numero numero decimal desde 0
+    if (calculatorState.currentValue === "Error"){
+        calculatorState.currentValue = "0."
+        return
+    }
+    //si el numero ya tiene punto no dejamos que se agregue otro
+    if(calculatorState.currentValue.includes(".")){
+        return
+    }
+    //si no tiene punto, agregamos el decinal al final
+    calculatorState.currentValue += "."
 }
 
 // Esta función limpia la calculadora y vuelve todo al estado inicial
@@ -218,6 +234,10 @@ function buttonPress(event) {
 
     if (type === "delete"){
         deleteLastDigit()
+    }
+
+    if (type === "decimal"){
+        handleDecimal()
     }
 
     // Después de cada acción, actualizamos la pantalla
