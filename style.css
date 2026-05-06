@@ -122,3 +122,10 @@ body {
   font-size: 14px;
   color: #4b5563;
 }
+
+.history-empty {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
+}

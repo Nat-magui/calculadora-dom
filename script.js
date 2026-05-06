@@ -7,7 +7,8 @@ const keypad = document.querySelector(".calculator-keypad")
 // Buscamos en el HTML el lista donde se van a mostrar las operaciones realizadas
 const historyList = document.querySelector(".history-list")
 
-// buscanmos el contenemos de 
+// buscanmos el mensaje que aparece cuando el historial esta vacio
+const historyEmptyMessage = document.querySelector(".history-empty")
 
 // Validamos que el display exista antes de seguir ejecutando el código
 if (!display) {
@@ -22,6 +23,11 @@ if (!keypad) {
 //Validamos que la lista del historial exista antes de seguir ejecutando codigo
 if (!historyList) {
     throw new Error("No se encontró la lista del historial")
+}
+
+// Validamos que el mensaje del historial vacio exista antes de seguir ejecutando codigo
+if (!historyEmptyMessage) {
+    throw new Error("No se encontró el mensaje del historial vacio")
 }
 
 // Creamos el estado de la calculadora, es decir, su "memoria interna"
@@ -77,6 +83,8 @@ function addToHistory(operationText) {
     historyItem.textContent = operationText
     //agregamos el nuevo elemento a la lista del historial
     historyList.append(historyItem)
+    //ocultamos el mensaje del historial vacio
+    historyEmptyMessage.hidden = true
 }
 
 // Esta función maneja los botones numéricos
