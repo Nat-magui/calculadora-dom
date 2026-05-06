@@ -1,3 +1,23 @@
+@media (max-width: 480px) {
+  body {
+    padding: 16px;
+  }
+
+  .calculator {
+    width: 100%;
+    margin: 24px auto;
+    padding: 20px;
+  }
+
+  .calculator-display {
+    font-size: 34px;
+  }
+
+  .calculator-button {
+    min-height: 52px;
+  }
+}
+
 body {
   margin: 0;
 
@@ -111,8 +131,8 @@ body {
 }
 
 .history-list {
-  margin: 0;
-  padding-left: 20px;
+  margin: 8px 0 0;
+  padding-left: 18px;
   max-height: 120px;
   overflow-y: auto;
 }
@@ -120,7 +140,7 @@ body {
 .history-list li {
   margin-bottom: 6px;
   font-size: 14px;
-  color: #4b5563;
+  color: #374151;
 }
 
 .history-empty {
