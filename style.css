@@ -58,3 +58,16 @@
 .calculator-button[data-value="←"] {
   background: #f3f4f6;
 }
+
+.calculator-history {
+  margin-top: 24px;
+}
+
+.history-list {
+  padding-left: 20px;
+}
+
+.history-list li {
+  margin-bottom: 6px;
+  font-size: 16px;
+}

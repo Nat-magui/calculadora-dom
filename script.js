@@ -4,6 +4,11 @@ const display = document.querySelector(".calculator-display")
 // Buscamos el contenedor donde JavaScript va a crear e insertar los botones
 const keypad = document.querySelector(".calculator-keypad")
 
+// Buscamos en el HTML el lista donde se van a mostrar las operaciones realizadas
+const historyList = document.querySelector(".history-list")
+
+// buscanmos el contenemos de 
+
 // Validamos que el display exista antes de seguir ejecutando el código
 if (!display) {
     throw new Error("No se encontró el display de la calculadora")
@@ -12,6 +17,11 @@ if (!display) {
 // Validamos que el teclado exista antes de seguir ejecutando el código
 if (!keypad) {
     throw new Error("No se encontró el teclado de la calculadora")
+}
+
+//Validamos que la lista del historial exista antes de seguir ejecutando codigo
+if (!historyList) {
+    throw new Error("No se encontró la lista del historial")
 }
 
 // Creamos el estado de la calculadora, es decir, su "memoria interna"
@@ -59,6 +69,16 @@ function renderDisplay() {
     display.textContent = calculatorState.currentValue
 }
 
+//esta funcion agrega una operacion al historial
+function addToHistory(operationText) {
+    //creamos un nuevo elemento de lista para mostrar la operacion realizada
+    const historyItem = document.createElement("li")
+    //le asignamos el texto de la operacion realizada
+    historyItem.textContent = operationText
+    //agregamos el nuevo elemento a la lista del historial
+    historyList.append(historyItem)
+}
+
 // Esta función maneja los botones numéricos
 function handleNumber(value) {
     // Si el valor actual es "0", reemplazamos ese cero por el número presionado
@@ -73,14 +93,14 @@ function handleNumber(value) {
 }
 
 //esta funcion agrega un punto decimal al numero actual
-function handleDecimal(){
+function handleDecimal() {
     //si el display muestra error, empezamos un numero numero decimal desde 0
-    if (calculatorState.currentValue === "Error"){
+    if (calculatorState.currentValue === "Error") {
         calculatorState.currentValue = "0."
         return
     }
     //si el numero ya tiene punto no dejamos que se agregue otro
-    if(calculatorState.currentValue.includes(".")){
+    if (calculatorState.currentValue.includes(".")) {
         return
     }
     //si no tiene punto, agregamos el decinal al final
@@ -95,21 +115,21 @@ function clearCalculator() {
 }
 
 //esta funcion borrara el ultimo digito del valor actual tipiado
-function deleteLastDigit(){
+function deleteLastDigit() {
     //si el display muestra error entonces volvemos a 0 directamente
-    if (calculatorState.currentValue === "Error"){
+    if (calculatorState.currentValue === "Error") {
         calculatorState.currentValue = "0"
         return
     }
 
     //si queda un solo digito volvemos a cer
-    if(calculatorState.currentValue.length === 1){
+    if (calculatorState.currentValue.length === 1) {
         calculatorState.currentValue = "0"
         return
     }
 
     //si hay mas de un digito, quitamos el ultimo caracter
-    calculatorState.currentValue = calculatorState.currentValue.slice(0,-1)
+    calculatorState.currentValue = calculatorState.currentValue.slice(0, -1)
 
 }
 
@@ -165,6 +185,11 @@ function calculateResult() {
 
     // Guardamos el resultado como texto para mostrarlo en el display
     calculatorState.currentValue = String(result)
+
+    // Agregamos la operación realizada al historial
+    const operationText = `${calculatorState.previousValue} ${calculatorState.operator} ${calculatorState.currentValue} = ${result}`
+    // Agregamos la operación realizada al historial
+    addToHistory(operationText)
 
     // Limpiamos el valor previo y el operador porque la operación ya terminó
     calculatorState.previousValue = null
@@ -232,11 +257,11 @@ function buttonPress(event) {
         calculateResult()
     }
 
-    if (type === "delete"){
+    if (type === "delete") {
         deleteLastDigit()
     }
 
-    if (type === "decimal"){
+    if (type === "decimal") {
         handleDecimal()
     }
 
