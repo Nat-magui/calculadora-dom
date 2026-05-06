@@ -196,6 +196,9 @@ function calculateResult() {
         result = previous / current
     }
 
+    //redondeamos el resultado a 10 decimales para evitar problemas de precision con numeros decimales
+    result = Math.round(result * 10000000000) / 10000000000
+
     // Guardamos el resultado como texto para mostrarlo en el display
     calculatorState.currentValue = String(result)
 
